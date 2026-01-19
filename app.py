@@ -3,30 +3,29 @@ from flask import Flask, render_template_string, session, redirect, url_for
 app = Flask(__name__)
 app.secret_key = 'sneakvault-secret-key-123'
 
-# --- DATABASE (Linked to your Local Images) ---
+# --- DATABASE (Updated for Capital 'I' in Images) ---
 products = [
     # HERO ITEM
-    {"id": 4, "name": "Jordan 1 High 'Chicago'", "brand": "JORDAN", "price": "₹38,000", "price_raw": 38000, "image": "/static/images/chicago.jpg", "size": "US 8", "type": "non-veg"},
+    {"id": 4, "name": "Jordan 1 High 'Chicago'", "brand": "JORDAN", "price": "₹38,000", "price_raw": 38000, "image": "/static/Images/chicago.jpg", "size": "US 8", "type": "non-veg"},
     
     # NIKE
-    {"id": 1, "name": "Dunk Low 'Panda'", "brand": "NIKE", "price": "₹12,499", "price_raw": 12499, "image": "/static/images/panda.jpg", "size": "US 10", "type": "non-veg"},
-    {"id": 2, "name": "Air Force 1 '07", "brand": "NIKE", "price": "₹8,995", "price_raw": 8995, "image": "/static/images/af1.jpg", "size": "US 9", "type": "non-veg"},
-    {"id": 5, "name": "Blazer Mid '77", "brand": "NIKE", "price": "₹9,695", "price_raw": 9695, "image": "/static/images/blazer.jpg", "size": "US 9", "type": "non-veg"},
-    {"id": 6, "name": "Air Max 97", "brand": "NIKE", "price": "₹16,995", "price_raw": 16995, "image": "/static/images/am97.jpg", "size": "US 11", "type": "veg"},
-    {"id": 7, "name": "Jordan 4 'Military'", "brand": "JORDAN", "price": "₹24,500", "price_raw": 24500, "image": "/static/images/military.jpg", "size": "US 10", "type": "non-veg"},
-    {"id": 8, "name": "SB Dunk Low", "brand": "NIKE", "price": "₹11,500", "price_raw": 11500, "image": "/static/images/sbdunk.jpg", "size": "US 9.5", "type": "non-veg"},
+    {"id": 1, "name": "Dunk Low 'Panda'", "brand": "NIKE", "price": "₹12,499", "price_raw": 12499, "image": "/static/Images/panda.jpg", "size": "US 10", "type": "non-veg"},
+    {"id": 2, "name": "Air Force 1 '07", "brand": "NIKE", "price": "₹8,995", "price_raw": 8995, "image": "/static/Images/af1.jpg", "size": "US 9", "type": "non-veg"},
+    {"id": 5, "name": "Blazer Mid '77", "brand": "NIKE", "price": "₹9,695", "price_raw": 9695, "image": "/static/Images/blazer.jpg", "size": "US 9", "type": "non-veg"},
+    {"id": 6, "name": "Air Max 97", "brand": "NIKE", "price": "₹16,995", "price_raw": 16995, "image": "/static/Images/am97.jpg", "size": "US 11", "type": "veg"},
+    {"id": 7, "name": "Jordan 4 'Military'", "brand": "JORDAN", "price": "₹24,500", "price_raw": 24500, "image": "/static/Images/military.jpg", "size": "US 10", "type": "non-veg"},
+    {"id": 8, "name": "SB Dunk Low", "brand": "NIKE", "price": "₹11,500", "price_raw": 11500, "image": "/static/Images/sbdunk.jpg", "size": "US 9.5", "type": "non-veg"},
 
     # ADIDAS
-    {"id": 9, "name": "Yeezy Slide 'Pure'", "brand": "ADIDAS", "price": "₹11,500", "price_raw": 11500, "image": "/static/images/yeezy_slide.jpg", "size": "US 9", "type": "veg"},
-    {"id": 10, "name": "Forum Low 'Vegan'", "brand": "ADIDAS", "price": "₹9,999", "price_raw": 9999, "image": "/static/images/forum.jpg", "size": "US 11", "type": "veg"},
-    {"id": 11, "name": "Superstar", "brand": "ADIDAS", "price": "₹7,999", "price_raw": 7999, "image": "/static/images/superstar.jpg", "size": "US 8", "type": "non-veg"},
+    {"id": 9, "name": "Yeezy Slide 'Pure'", "brand": "ADIDAS", "price": "₹11,500", "price_raw": 11500, "image": "/static/Images/yeezy_slide.jpg", "size": "US 9", "type": "veg"},
+    {"id": 10, "name": "Forum Low 'Vegan'", "brand": "ADIDAS", "price": "₹9,999", "price_raw": 9999, "image": "/static/Images/forum.jpg", "size": "US 11", "type": "veg"},
+    {"id": 11, "name": "Superstar", "brand": "ADIDAS", "price": "₹7,999", "price_raw": 7999, "image": "/static/Images/superstar.jpg", "size": "US 8", "type": "non-veg"},
 
     # PUMA
-    {"id": 17, "name": "RS-X Efekt", "brand": "PUMA", "price": "₹9,999", "price_raw": 9999, "image": "/static/images/puma_rsx.jpg", "size": "US 10", "type": "veg"},
-    {"id": 18, "name": "LaMelo Ball MB.02", "brand": "PUMA", "price": "₹14,999", "price_raw": 14999, "image": "/static/images/mb02.jpg", "size": "US 11", "type": "veg"},
-    {"id": 20, "name": "Mayze Stack", "brand": "PUMA", "price": "₹7,999", "price_raw": 7999, "image": "/static/images/mayze.jpg", "size": "US 7", "type": "non-veg"}
+    {"id": 17, "name": "RS-X Efekt", "brand": "PUMA", "price": "₹9,999", "price_raw": 9999, "image": "/static/Images/puma_rsx.jpg", "size": "US 10", "type": "veg"},
+    {"id": 18, "name": "LaMelo Ball MB.02", "brand": "PUMA", "price": "₹14,999", "price_raw": 14999, "image": "/static/Images/mb02.jpg", "size": "US 11", "type": "veg"},
+    {"id": 20, "name": "Mayze Stack", "brand": "PUMA", "price": "₹7,999", "price_raw": 7999, "image": "/static/Images/mayze.jpg", "size": "US 7", "type": "non-veg"}
 ]
-
 # --- TEMPLATES ---
 BASE_HEAD = """
 <!DOCTYPE html>
@@ -223,4 +222,5 @@ def clear_cart():
 
 if __name__ == '__main__':
     print("SneakVault Final is running on http://127.0.0.1:5000")
+
     app.run(debug=True)
